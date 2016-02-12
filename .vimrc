@@ -17,6 +17,7 @@ function! Make()
   echo curr_dir
   execute 'lcd ' . curr_dir
   execute 'make %:r'
+"  execute 'g++ -g -Wall -Wextra %:p -o %:r'
   execute 'lcd -'
 endfunction
 nnoremap <F8> :update<CR>:call Make()<CR>

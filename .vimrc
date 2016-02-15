@@ -8,7 +8,7 @@ set shiftwidth=4
 set tabstop=4
 "set softtabstop=4
 
-" Save and make current file
+" Save and make current file/Kompilacja z uzyciem make
 function! Make()
   let curr_dir = expand('%:h')
   if curr_dir == ''
@@ -17,10 +17,14 @@ function! Make()
   echo curr_dir
   execute 'lcd ' . curr_dir
   execute 'make %:r'
-"  execute 'g++ -g -Wall -Wextra %:p -o %:r'
   execute 'lcd -'
 endfunction
-nnoremap <F8> :update<CR>:call Make()<CR>
+" funkcja wylaczana, uzywam tej z g++
+" nnoremap <F8> :update<CR>:call Make()<CR>
+ 
+
+" Kompilacja z uzyciem g++ i dodatkowymi parametrami
+ nnoremap <F8> :update<CR>:!g++ -g -Wall -Wextra -std=c++14 %:p -o %:r<CR>
 
 " Run current file
 nnoremap <F9> :!./%:r<CR>
